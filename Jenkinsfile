@@ -1,6 +1,6 @@
 pipeline {
     agent { 
-    	any
+    	label 'jenkins-ssh-slave'
     }
            
     stages {
