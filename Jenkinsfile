@@ -1,10 +1,10 @@
-def image
 pipeline {
     agent { 
     	label 'jenkins-ssh-slave'
     }
     environment {
 	    registryCredential = 'dockerhub'
+	    image = ''
 	}
     
            
