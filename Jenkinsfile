@@ -1,7 +1,10 @@
+def image
 pipeline {
     agent { 
     	label 'jenkins-ssh-slave'
     }
+    
+    
            
     stages {
     
@@ -23,7 +26,15 @@ pipeline {
 	   stage('Build Image'){
 			steps {
 				script {
-   					docker.build('navkkrnair/config-server:1.0')
+   					image = docker.build('navkkrnair/config-server:1.0')
+				}
+			}
+		}
+		
+		stage('Push Image to registry'){
+			steps {
+				script {
+   					image.push()
 				}
 			}
 		}
