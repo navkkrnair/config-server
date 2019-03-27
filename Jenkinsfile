@@ -3,7 +3,9 @@ pipeline {
     agent { 
     	label 'jenkins-ssh-slave'
     }
-    
+    environment {
+	    registryCredential = 'dockerhub'
+	}
     
            
     stages {
@@ -34,8 +36,10 @@ pipeline {
 		stage('Push Image to registry'){
 			steps {
 				script {
-   					image.push()
-				}
+      				docker.withRegistry( '', registryCredential ) {
+        				image.push()
+      }
+    }
 			}
 		}
 	}
