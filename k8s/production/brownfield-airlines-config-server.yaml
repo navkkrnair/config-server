@@ -1,0 +1,48 @@
+# ------------------- Brownfield Airlines Deployment ------------------- #
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: config-server
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: config-server
+  template:
+    metadata:
+      name: config-server
+      labels:
+        app: config-server
+    spec:
+      containers:
+      - name: config-server
+        image: navkkrnair/config-server:1.0
+        imagePullPolicy: Always
+        resources:
+           requests:
+              cpu: 200m
+              memory: 300Mi
+           limits:
+              cpu: 500m
+              memory: 500Mi
+
+---
+# ------------------- Brownfield Airlines Service ------------------- #
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server
+  labels:
+     app: config-server
+spec:
+  type: ClusterIP
+  selector:
+    app: config-server
+  ports:
+    - port: 8888
+      targetPort: 8888
+
+
+  
