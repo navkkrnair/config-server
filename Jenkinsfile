@@ -19,6 +19,10 @@ pipeline {
    		}
    		
    		stage('Build the Jar') {
+   			when {
+			       branch 'master'
+			   }
+
              steps {
              	sh script: 'chmod +x ./gradlew'
 	      		sh script: './gradlew bootJar'
