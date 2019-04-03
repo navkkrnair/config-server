@@ -1,7 +1,7 @@
 def project = 'xenon-poet-229608'
 def  appName = 'config-server'
 def  feSvcName = "${appName}"
-def  imageTag = "gcr.io/${project}/${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
+def  imageTag = "gcr.io/${project}/${appName}:${env.BUILD_NUMBER}"
 
 pipeline {
   agent {
