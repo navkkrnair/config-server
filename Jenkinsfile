@@ -41,7 +41,6 @@ spec:
       steps {
         container('gradle') {
           sh """
-            checkout scm
 	    ./gradlew bootJar
           """
         }
