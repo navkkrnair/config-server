@@ -30,7 +30,7 @@ spec:
     tty: true
 """
 }
-  }
+
   stages {
     stage('Build and push image with Container Builder') {
       steps {
