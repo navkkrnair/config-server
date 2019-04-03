@@ -37,18 +37,10 @@ spec:
 }
   }
   stages {
-    stage('Build') {
-      steps {
-        container('gradle') {
-          sh """
-	    ./gradlew bootJar
-          """
-        }
-      }
-    }
     stage('Build and push image with Container Builder') {
       steps {
         container('gcloud') {
+	  sh ./gradlew bootJar
           sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${imageTag} ."
         }
       }
