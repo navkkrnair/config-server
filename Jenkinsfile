@@ -61,7 +61,7 @@ spec:
       steps{
         container('kubectl') {
         // Change deployed image in canary to the one we just built
-          sh("sed -i.bak 's#gcr.io/cloud-solutions-images/config-server#${imageTag}#' ./k8s/production/*.yaml")
+          sh("sed -i.bak 's#gcr.io/cloud-solutions-images/${imageTag}#' ./k8s/production/*.yaml")
           sh("kubectl apply -f k8s/production/")
         }
       }
