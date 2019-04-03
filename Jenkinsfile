@@ -18,11 +18,6 @@ spec:
   # Use service account that can deploy to all namespaces
   serviceAccountName: cd-jenkins
   containers:
-  - name: gradle
-    image: gcr.io/cloud-builders/gradle
-    command:
-    - cat
-    tty: true
   - name: gcloud
     image: gcr.io/cloud-builders/gcloud
     command:
