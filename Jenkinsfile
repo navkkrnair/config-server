@@ -56,7 +56,6 @@ spec:
     
     stage('Deploy Production') {
       // Production branch
-      when { branch 'master' }
       steps{
         container('kubectl') {
         // Change deployed image in canary to the one we just built
